@@ -17,7 +17,8 @@ tags:
 
 ### 默认就安装好的插件
 
-![image](https://chenyuanchn.github.io/assets/images/2017/plugin.png)
+![image](https://chenyuanchn.github.io/img/2017/plugin.png)
+		 
 
 - cordova-plugin-whitelist:白名单插件，跨域这些都要用到
 
