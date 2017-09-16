@@ -7,6 +7,7 @@ author:     "chenyuanchn"
 header-img: ""
 tags:
     - ionic3
+	- ionic插件
 ---
 
 ## 插件是什么
