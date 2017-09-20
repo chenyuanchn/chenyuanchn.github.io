@@ -1,14 +1,17 @@
 ---
 layout:     post
 title:      "ionic3(二)：插件篇"
-subtitle:   "ionic3常用插件介绍"
 date:       2017-09-13
-author:     "chenyuanchn"
-header-img: ""
-tags:
-    - ionic3 
-    - ionic插件
+categories: ionic3
+tags:  ionic3 ionic插件
+author: 凸凸	
 ---
+
+* content
+{:toc}
+
+
+
 
 ## 插件是什么
 
