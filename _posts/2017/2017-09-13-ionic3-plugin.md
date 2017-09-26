@@ -28,7 +28,7 @@ author: 凸凸
 
 ### 支付宝插件
 
-[额，用我家的吧](https://github.com/chenyuanchn/cordova-plugin-alipay)
+https://github.com/chenyuanchn/cordova-plugin-alipay
 
 ### 微信插件
 
