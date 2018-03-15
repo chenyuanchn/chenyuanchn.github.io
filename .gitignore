@@ -1,6 +1,8 @@
-_site
-.sass-cache
-.jekyll-metadata
-.vscode
-.idea
+.idea/
 .DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
