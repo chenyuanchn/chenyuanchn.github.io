@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://chenyuanchn.github.io/index/</loc>
+    <loc>http://chenyuanchn.github.io/https/2018-03-16-https-init/</loc>
     
-    <lastmod>2018-03-15T14:47:07.902Z</lastmod>
+    <lastmod>2018-03-16T03:20:18.596Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://chenyuanchn.github.io/ionic/2017-09-13-ionic3-plugin/</loc>
     
-    <lastmod>2018-03-15T14:29:25.701Z</lastmod>
+    <lastmod>2018-03-16T03:01:33.442Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chenyuanchn.github.io/index/</loc>
+    
+    <lastmod>2018-03-15T14:47:07.902Z</lastmod>
     
   </url>
   
