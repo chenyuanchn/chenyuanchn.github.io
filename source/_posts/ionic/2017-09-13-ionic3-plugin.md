@@ -2,6 +2,7 @@
 title:      ionic3(二)：插件篇
 date:       2017-09-13
 tags:  [ionic3]	
+toc: true
 ---
 
 ## 插件是什么

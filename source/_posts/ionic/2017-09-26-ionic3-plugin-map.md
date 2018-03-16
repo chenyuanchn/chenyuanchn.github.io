@@ -1,7 +1,8 @@
 ---
 title:      ionic插件：地图定位和导航
 date:       2017-09-26
-tags:  [ionic3]	
+tags:  [ionic3]
+toc: true	
 ---
 
 ## 实现功能
