@@ -3,35 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>https阿里云申请及服务器nginx配置 | 凸凸</title>
+    <title>ionic3(二)：插件篇 | 凸凸</title>
     
     
-        <meta name="keywords" content="https" />
+        <meta name="keywords" content="ionic3" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="配置解析域名及对应的ip地址设置好域名和对应的ip服务器地址   购买配置证书 选择symantec一个域名免费型   购买后 填写申请人信息 选择dns（dns和文件二选一）申请成功后下载nginx证书（zip里包含xx.pem和xx.key两个文件）把这两个文件放入域名对应的ip服务器的nginx目录下 在nginx的conf文件里配置https默认端口443对应的tomcat端口 nginx">
-<meta name="keywords" content="https">
+    <meta name="description" content="插件是什么插件就是使用js调用原生的设备 常用插件默认就安装好的插件  cordova-plugin-whitelist:白名单插件，跨域这些都要用到  支付宝插件https://github.com/chenyuanchn/cordova-plugin-alipay 微信插件https://github.com/xu-li/cordova-plugin-wechat 有空完善">
+<meta name="keywords" content="ionic3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="https阿里云申请及服务器nginx配置">
-<meta property="og:url" content="http://chenyuanchn.github.io/https/2018-03-16-https-init/index.html">
+<meta property="og:title" content="ionic3(二)：插件篇">
+<meta property="og:url" content="http://chenyuanchn.github.io/ionic/1.2-ionic3-plugin/index.html">
 <meta property="og:site_name" content="凸凸">
-<meta property="og:description" content="配置解析域名及对应的ip地址设置好域名和对应的ip服务器地址   购买配置证书 选择symantec一个域名免费型   购买后 填写申请人信息 选择dns（dns和文件二选一）申请成功后下载nginx证书（zip里包含xx.pem和xx.key两个文件）把这两个文件放入域名对应的ip服务器的nginx目录下 在nginx的conf文件里配置https默认端口443对应的tomcat端口 nginx">
+<meta property="og:description" content="插件是什么插件就是使用js调用原生的设备 常用插件默认就安装好的插件  cordova-plugin-whitelist:白名单插件，跨域这些都要用到  支付宝插件https://github.com/chenyuanchn/cordova-plugin-alipay 微信插件https://github.com/xu-li/cordova-plugin-wechat 有空完善">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/1.jpg">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/2.png">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/3.png">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/4.png">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/5.png">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/6.png">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/7.png">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/8.png">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/9.png">
-<meta property="og:image" content="http://chenyuanchn.github.io/images/2018/https/10.png">
-<meta property="og:updated_time" content="2018-03-16T08:57:51.849Z">
+<meta property="og:image" content="http://chenyuanchn.github.io/images/2017/plugin.png">
+<meta property="og:updated_time" content="2018-03-16T08:56:09.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="https阿里云申请及服务器nginx配置">
-<meta name="twitter:description" content="配置解析域名及对应的ip地址设置好域名和对应的ip服务器地址   购买配置证书 选择symantec一个域名免费型   购买后 填写申请人信息 选择dns（dns和文件二选一）申请成功后下载nginx证书（zip里包含xx.pem和xx.key两个文件）把这两个文件放入域名对应的ip服务器的nginx目录下 在nginx的conf文件里配置https默认端口443对应的tomcat端口 nginx">
-<meta name="twitter:image" content="http://chenyuanchn.github.io/images/2018/https/1.jpg">
+<meta name="twitter:title" content="ionic3(二)：插件篇">
+<meta name="twitter:description" content="插件是什么插件就是使用js调用原生的设备 常用插件默认就安装好的插件  cordova-plugin-whitelist:白名单插件，跨域这些都要用到  支付宝插件https://github.com/chenyuanchn/cordova-plugin-alipay 微信插件https://github.com/xu-li/cordova-plugin-wechat 有空完善">
+<meta name="twitter:image" content="http://chenyuanchn.github.io/images/2017/plugin.png">
     
 
     
@@ -170,22 +161,22 @@
         
         
          <ul class="unstyled" id="tree" > 
-                    <li class="directory open">
-                        <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
-                            &nbsp;
-                            https
-                        </a>
-                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/https/2018-03-16-https-init/">https阿里云申请及服务器nginx配置</a></li>  </ul> 
-                    </li> 
-                    
                     <li class="directory">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            https
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/https/1.1-https-init/">https阿里云申请及服务器nginx配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
                             ionic
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/ionic/2017-09-13-ionic3-init/">ionic3(一)：入门篇</a></li>  <li class="file"><a href="/ionic/2017-09-26-ionic3-plugin-map/">ionic插件：地图定位和导航</a></li>  <li class="file"><a href="/ionic/2017-09-13-ionic3-plugin/">ionic3(二)：插件篇</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/ionic/1.1-ionic3-init/">ionic3(一)：入门篇</a></li>  <li class="file active"><a href="/ionic/1.2-ionic3-plugin/">ionic3(二)：插件篇</a></li>  <li class="file"><a href="/ionic/10.1-ionic3-plugin-map/">ionic插件：地图定位和导航</a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/index/">欢迎来到凸凸的知识库</a></li>  </ul> 
     </div>
@@ -258,7 +249,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-https/2018-03-16-https-init" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-ionic/1.2-ionic3-plugin" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -268,20 +259,20 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/https/">https</a>
+        <a class="article-category-link" href="/categories/ionic/">ionic</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/https/">https</a>
+        <a class="tag-link" href="/tags/ionic3/">ionic3</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/https/2018-03-16-https-init/">
-            <time datetime="2018-03-15T16:00:00.000Z" itemprop="datePublished">2018-03-16</time>
+        <a href="/ionic/1.2-ionic3-plugin/">
+            <time datetime="2017-09-12T16:00:00.000Z" itemprop="datePublished">2017-09-13</time>
         </a>
     </div>
 
@@ -293,7 +284,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            https阿里云申请及服务器nginx配置
+            ionic3(二)：插件篇
         </h1>
     
 
@@ -306,24 +297,19 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置解析域名及对应的ip地址"><span class="toc-number">1.</span> <span class="toc-text">配置解析域名及对应的ip地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#购买配置证书"><span class="toc-number">2.</span> <span class="toc-text">购买配置证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx相关配置"><span class="toc-number">3.</span> <span class="toc-text">nginx相关配置</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件是什么"><span class="toc-number">1.</span> <span class="toc-text">插件是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用插件"><span class="toc-number">2.</span> <span class="toc-text">常用插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认就安装好的插件"><span class="toc-number">2.1.</span> <span class="toc-text">默认就安装好的插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#支付宝插件"><span class="toc-number">2.2.</span> <span class="toc-text">支付宝插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微信插件"><span class="toc-number">2.3.</span> <span class="toc-text">微信插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有空完善"><span class="toc-number">2.4.</span> <span class="toc-text">有空完善</span></a></li></ol></li></ol>
                 </div>
             
         
         
-            <h2 id="配置解析域名及对应的ip地址"><a href="#配置解析域名及对应的ip地址" class="headerlink" title="配置解析域名及对应的ip地址"></a>配置解析域名及对应的ip地址</h2><p>设置好域名和对应的ip服务器地址</p>
-<p><img src="../../images/2018/https/1.jpg" alt=""></p>
-<p><img src="../../images/2018/https/2.png" alt=""></p>
-<h2 id="购买配置证书"><a href="#购买配置证书" class="headerlink" title="购买配置证书"></a>购买配置证书</h2><p><img src="../../images/2018/https/3.png" alt=""></p>
-<p>选择symantec一个域名免费型</p>
-<p><img src="../../images/2018/https/4.png" alt=""></p>
-<p><img src="../../images/2018/https/5.png" alt=""></p>
-<p>购买后 填写申请人信息 选择dns（dns和文件二选一）<br>申请成功后下载nginx证书（zip里包含xx.pem和xx.key两个文件）<br>把这两个文件放入域名对应的ip服务器的nginx目录下</p>
-<p>在nginx的conf文件里配置https默认端口443对应的tomcat端口</p>
-<h2 id="nginx相关配置"><a href="#nginx相关配置" class="headerlink" title="nginx相关配置"></a>nginx相关配置</h2><p><img src="../../images/2018/https/6.png" alt=""><br><img src="../../images/2018/https/7.png" alt=""></p>
-<p>也可以在default.conf里配置http（默认80端口）对应的tomcat，在ssl.conf里配置https（默认443端口）对应的tomcat</p>
-<p><img src="../../images/2018/https/8.png" alt=""><br><img src="../../images/2018/https/9.png" alt=""><br><img src="../../images/2018/https/10.png" alt=""></p>
-
+            <h2 id="插件是什么"><a href="#插件是什么" class="headerlink" title="插件是什么"></a>插件是什么</h2><p>插件就是使用js调用原生的设备</p>
+<h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><h3 id="默认就安装好的插件"><a href="#默认就安装好的插件" class="headerlink" title="默认就安装好的插件"></a>默认就安装好的插件</h3><p><img src="../../images/2017/plugin.png" alt=""></p>
+<ul>
+<li>cordova-plugin-whitelist:白名单插件，跨域这些都要用到</li>
+</ul>
+<h3 id="支付宝插件"><a href="#支付宝插件" class="headerlink" title="支付宝插件"></a>支付宝插件</h3><p><a href="https://github.com/chenyuanchn/cordova-plugin-alipay">https://github.com/chenyuanchn/cordova-plugin-alipay</a></p>
+<h3 id="微信插件"><a href="#微信插件" class="headerlink" title="微信插件"></a>微信插件</h3><p><a href="https://github.com/xu-li/cordova-plugin-wechat">https://github.com/xu-li/cordova-plugin-wechat</a></p>
+<h3 id="有空完善"><a href="#有空完善" class="headerlink" title="有空完善"></a>有空完善</h3>
             </div>
         
         <footer class="article-footer">
@@ -335,10 +321,19 @@
     
 <nav id="article-nav">
     
+        <a href="/ionic/1.1-ionic3-init/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    ionic3(一)：入门篇
+                
+            </div>
+        </a>
     
-        <a href="/ionic/2017-09-26-ionic3-plugin-map/" id="article-nav-older" class="article-nav-link-wrap">
+    
+        <a href="/index/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">ionic插件：地图定位和导航</div>
+            <div class="article-nav-title">欢迎来到凸凸的知识库</div>
         </a>
     
 </nav>
