@@ -12,7 +12,7 @@ tags:  [ionic3]
 
 ### 默认就安装好的插件
 
-![image](../../images/2017/plugin.png)
+![](../../images/2017/plugin.png)
 		 
 
 - cordova-plugin-whitelist:白名单插件，跨域这些都要用到
