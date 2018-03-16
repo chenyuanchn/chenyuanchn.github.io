@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://chenyuanchn.github.io/https/1.1-https-init/</loc>
+    <loc>http://chenyuanchn.github.io/cordova/1.1-cordova-plugin/</loc>
     
-    <lastmod>2018-03-16T08:57:51.849Z</lastmod>
+    <lastmod>2018-03-16T09:45:26.407Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chenyuanchn.github.io/ionic/10.1-ionic3-plugin-map/</loc>
+    <loc>http://chenyuanchn.github.io/cordova/1.2-cordova-plugin-map/</loc>
     
-    <lastmod>2018-03-16T08:56:18.833Z</lastmod>
+    <lastmod>2018-03-16T09:44:59.900Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://chenyuanchn.github.io/https/1.1-https-init/</loc>
+    
+    <lastmod>2018-03-16T08:57:51.849Z</lastmod>
     
   </url>
   
@@ -51,14 +58,14 @@
   </url>
   
   <url>
-    <loc>http://chenyuanchn.github.io/categories/index.html</loc>
+    <loc>http://chenyuanchn.github.io/tags/index.html</loc>
     
     <lastmod>2018-03-15T13:28:03.563Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://chenyuanchn.github.io/tags/index.html</loc>
+    <loc>http://chenyuanchn.github.io/categories/index.html</loc>
     
     <lastmod>2018-03-15T13:28:03.563Z</lastmod>
     

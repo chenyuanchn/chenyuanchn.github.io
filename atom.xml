@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://chenyuanchn.github.io/"/>
-  <updated>2018-03-16T08:57:51.849Z</updated>
+  <updated>2018-03-16T09:45:26.407Z</updated>
   <id>http://chenyuanchn.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cordova安卓插件开发</title>
+    <link href="http://chenyuanchn.github.io/cordova/1.1-cordova-plugin/"/>
+    <id>http://chenyuanchn.github.io/cordova/1.1-cordova-plugin/</id>
+    <published>2018-03-15T16:00:00.000Z</published>
+    <updated>2018-03-16T09:45:26.407Z</updated>
+    
+    <content type="html"><![CDATA[<p>之前是有道记录的，而且没有很好的整理，先移过来，后面完善</p><p>针对cordova安卓插件的开发，这里给出例子，实现震动和提示两个小功能</p><h2 id="plugin-xml内容"><a href="#plugin-xml内容" class="headerlink" title="plugin.xml内容"></a>plugin.xml内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;plugin xmlns=&quot;http://apache.org/cordova/ns/plugins/1.0&quot;</span><br><span class="line">    id=&quot;com.xc.sep&quot;</span><br><span class="line">    version=&quot;0.0.1&quot;&gt;</span><br><span class="line">    &lt;name&gt;Sep&lt;/name&gt;</span><br><span class="line">    &lt;js-module src=&quot;www/Sep.js&quot; name=&quot;Sep&quot;&gt;</span><br><span class="line">        &lt;clobbers target=&quot;Sep&quot; /&gt;</span><br><span class="line">    &lt;/js-module&gt;</span><br><span class="line">    &lt;platform name=&quot;android&quot;&gt;</span><br><span class="line">        &lt;source-file src=&quot;src/android/Sep.java&quot; target-dir=&quot;src/com/xc/sep&quot; /&gt;</span><br><span class="line">        &lt;config-file target=&quot;res/xml/config.xml&quot; parent=&quot;/*&quot;&gt;</span><br><span class="line">            &lt;feature name=&quot;Sep&quot;&gt;</span><br><span class="line">                &lt;param name=&quot;android-package&quot; value=&quot;com.xc.sep.Sep&quot;/&gt;</span><br><span class="line">            &lt;/feature&gt;</span><br><span class="line">        &lt;/config-file&gt;</span><br><span class="line">        &lt;config-file target=&quot;AndroidManifest.xml&quot; parent=&quot;/*&quot;&gt;</span><br><span class="line">            &lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;</span><br><span class="line">        &lt;/config-file&gt;</span><br><span class="line">    &lt;/platform&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure><h2 id="Sep-js内容"><a href="#Sep-js内容" class="headerlink" title="Sep.js内容"></a>Sep.js内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var exec = require(&apos;cordova/exec&apos;);</span><br><span class="line"></span><br><span class="line">var Sep = function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">Sep.prototype.showVibration = function(success, error) &#123;</span><br><span class="line">    exec(success, error, &apos;Sep&apos;, &apos;showVibration&apos;, []);</span><br><span class="line">&#125;;</span><br><span class="line">Sep.prototype.showToast=function(content,type)&#123;</span><br><span class="line">    exec(null, null, &quot;Sep&quot;, &quot;showToast&quot;, [content,type]);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var sep = new Sep();</span><br><span class="line">module.exports = sep;</span><br></pre></td></tr></table></figure><h2 id="Sep-java内容"><a href="#Sep-java内容" class="headerlink" title="Sep.java内容"></a>Sep.java内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">package com.xc.sep;</span><br><span class="line"></span><br><span class="line">import org.apache.cordova.CallbackContext;</span><br><span class="line">import org.apache.cordova.CordovaInterface;</span><br><span class="line">import org.apache.cordova.CordovaPlugin;</span><br><span class="line">import org.apache.cordova.CordovaWebView;</span><br><span class="line">import org.json.JSONArray;</span><br><span class="line">import org.json.JSONException;</span><br><span class="line"></span><br><span class="line">import android.content.Context;</span><br><span class="line">import android.media.AudioManager;</span><br><span class="line">import android.os.Vibrator;</span><br><span class="line"></span><br><span class="line">public class Sep extends CordovaPlugin &#123;</span><br><span class="line"></span><br><span class="line">    public void initialize(CordovaInterface cordova, CordovaWebView webView) &#123;</span><br><span class="line">        super.initialize(cordova, webView);</span><br><span class="line">        Context context = this.cordova.getActivity().getApplicationContext();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException &#123;</span><br><span class="line">        if (&quot;showVibration&quot;.equals(action)) &#123;</span><br><span class="line">            showVibration();</span><br><span class="line">            callbackContext.success(&quot;success&quot;);</span><br><span class="line">            return true;</span><br><span class="line">        &#125;else if (&quot;showToast&quot;.equals(action)) &#123;</span><br><span class="line">            showToast(args.getString(0), args.getInt(1));</span><br><span class="line">            callbackContext.success(&quot;success&quot;);</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        callbackContext.error(&quot;error 没有该方法&quot;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    private void showVibration()&#123;  </span><br><span class="line">        CordovaInterface cordova = this.cordova;  </span><br><span class="line">        AudioManager manager = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);</span><br><span class="line">        if (manager.getRingerMode() != AudioManager.RINGER_MODE_SILENT) &#123;</span><br><span class="line">            Vibrator vibrator = (Vibrator) this.cordova.getActivity().getSystemService(Context.VIBRATOR_SERVICE);</span><br><span class="line">            vibrator.vibrate(1000);</span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">     private void showToast(String text,int type)&#123;  </span><br><span class="line">            CordovaInterface cordova = this.cordova;  </span><br><span class="line">            android.widget.Toast.makeText(cordova.getActivity(), text, type).show();  </span><br><span class="line">     &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>cordova plugin add  C:\Users\Administrator\Desktop\Sep（你的插件文件夹路径）</p><h2 id="js中调用"><a href="#js中调用" class="headerlink" title="js中调用"></a>js中调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sep.showVibration(function(message) &#123;</span><br><span class="line">                     alert(&quot;showVibration :&quot;+message);</span><br><span class="line">                &#125;, function(message) &#123;</span><br><span class="line">                     alert(&quot;showVibration :&quot;+message);</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Sep.showToast(&quot;测试提示2秒&quot;,2);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;之前是有道记录的，而且没有很好的整理，先移过来，后面完善&lt;/p&gt;
+&lt;p&gt;针对cordova安卓插件的开发，这里给出例子，实现震动和提示两个小功能&lt;/p&gt;
+&lt;h2 id=&quot;plugin-xml内容&quot;&gt;&lt;a href=&quot;#plugin-xml内容&quot; class=&quot;headerl
+      
+    
+    </summary>
+    
+      <category term="cordova" scheme="http://chenyuanchn.github.io/categories/cordova/"/>
+    
+    
+      <category term="cordova" scheme="http://chenyuanchn.github.io/tags/cordova/"/>
+    
+  </entry>
   
   <entry>
     <title>https阿里云申请及服务器nginx配置</title>
@@ -43,11 +70,11 @@
   </entry>
   
   <entry>
-    <title>ionic插件：地图定位和导航</title>
-    <link href="http://chenyuanchn.github.io/ionic/10.1-ionic3-plugin-map/"/>
-    <id>http://chenyuanchn.github.io/ionic/10.1-ionic3-plugin-map/</id>
+    <title>cordova插件：地图定位和导航</title>
+    <link href="http://chenyuanchn.github.io/cordova/1.2-cordova-plugin-map/"/>
+    <id>http://chenyuanchn.github.io/cordova/1.2-cordova-plugin-map/</id>
     <published>2017-09-25T16:00:00.000Z</published>
-    <updated>2018-03-16T08:56:18.833Z</updated>
+    <updated>2018-03-16T09:44:59.900Z</updated>
     
     <content type="html"><![CDATA[<h2 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h2><p>在手机上实现地图展示和定位信息，并可以添加标记在地图上，点击标记显示详情等。所以地图用web（方便拓展），定位用原生插件（浏览器定位不准确）</p><h2 id="地图"><a href="#地图" class="headerlink" title="地图"></a>地图</h2><p>使用百度或者高德的jsapi，在项目中导入对应的js（都需要申请对应的开发者获取key）</p><h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><ul><li><p>ios使用官方插件：cordova-plugin-geolocation</p></li><li><p>安卓使用百度定位插件：<a href="https://github.com/liangzhenghui/cordova-qdc-baidu-location">https://github.com/liangzhenghui/cordova-qdc-baidu-location</a></p></li><li><p>安卓使用高德定位插件：<a href="https://github.com/tomisacatyet/Cordova-AMap4Locaton">https://github.com/tomisacatyet/Cordova-AMap4Locaton</a></p></li></ul><h2 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h2><p><a href="https://github.com/huangliop/cordova-baidu-navigator">https://github.com/huangliop/cordova-baidu-navigator</a></p><h2 id="有空完善"><a href="#有空完善" class="headerlink" title="有空完善"></a>有空完善</h2>]]></content>
     
@@ -60,10 +87,10 @@
     
     </summary>
     
-      <category term="ionic" scheme="http://chenyuanchn.github.io/categories/ionic/"/>
+      <category term="cordova" scheme="http://chenyuanchn.github.io/categories/cordova/"/>
     
     
-      <category term="ionic3" scheme="http://chenyuanchn.github.io/tags/ionic3/"/>
+      <category term="cordova" scheme="http://chenyuanchn.github.io/tags/cordova/"/>
     
   </entry>
   

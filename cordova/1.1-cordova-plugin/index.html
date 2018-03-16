@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>cordova安卓插件开发 | 凸凸</title>
+    
+    
+        <meta name="keywords" content="cordova" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="之前是有道记录的，而且没有很好的整理，先移过来，后面完善 针对cordova安卓插件的开发，这里给出例子，实现震动和提示两个小功能 plugin.xml内容1234567891011121314151617181920&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;plugin xmlns=&amp;quot;http">
+<meta name="keywords" content="cordova">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cordova安卓插件开发">
+<meta property="og:url" content="http://chenyuanchn.github.io/cordova/1.1-cordova-plugin/index.html">
+<meta property="og:site_name" content="凸凸">
+<meta property="og:description" content="之前是有道记录的，而且没有很好的整理，先移过来，后面完善 针对cordova安卓插件的开发，这里给出例子，实现震动和提示两个小功能 plugin.xml内容1234567891011121314151617181920&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;plugin xmlns=&amp;quot;http">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-16T09:45:26.407Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cordova安卓插件开发">
+<meta name="twitter:description" content="之前是有道记录的，而且没有很好的整理，先移过来，后面完善 针对cordova安卓插件的开发，这里给出例子，实现震动和提示两个小功能 plugin.xml内容1234567891011121314151617181920&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;plugin xmlns=&amp;quot;http">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="凸凸" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">凸凸</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            cordova
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/cordova/1.1-cordova-plugin/">cordova安卓插件开发</a></li>  <li class="file"><a href="/cordova/1.2-cordova-plugin-map/">cordova插件：地图定位和导航</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            https
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/https/1.1-https-init/">https阿里云申请及服务器nginx配置</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ionic
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/ionic/1.1-ionic3-init/">ionic3(一)：入门篇</a></li>  <li class="file"><a href="/ionic/1.2-ionic3-plugin/">ionic3(二)：插件篇</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/index/">欢迎来到凸凸的知识库</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-cordova/1.1-cordova-plugin" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/cordova/">cordova</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/cordova/">cordova</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/cordova/1.1-cordova-plugin/">
+            <time datetime="2018-03-15T16:00:00.000Z" itemprop="datePublished">2018-03-16</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            cordova安卓插件开发
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#plugin-xml内容"><span class="toc-number">1.</span> <span class="toc-text">plugin.xml内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sep-js内容"><span class="toc-number">2.</span> <span class="toc-text">Sep.js内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sep-java内容"><span class="toc-number">3.</span> <span class="toc-text">Sep.java内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装插件"><span class="toc-number">4.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js中调用"><span class="toc-number">5.</span> <span class="toc-text">js中调用</span></a></li></ol>
+                </div>
+            
+        
+        
+            <p>之前是有道记录的，而且没有很好的整理，先移过来，后面完善</p>
+<p>针对cordova安卓插件的开发，这里给出例子，实现震动和提示两个小功能</p>
+<h2 id="plugin-xml内容"><a href="#plugin-xml内容" class="headerlink" title="plugin.xml内容"></a>plugin.xml内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;plugin xmlns=&quot;http://apache.org/cordova/ns/plugins/1.0&quot;</span><br><span class="line">    id=&quot;com.xc.sep&quot;</span><br><span class="line">    version=&quot;0.0.1&quot;&gt;</span><br><span class="line">    &lt;name&gt;Sep&lt;/name&gt;</span><br><span class="line">    &lt;js-module src=&quot;www/Sep.js&quot; name=&quot;Sep&quot;&gt;</span><br><span class="line">        &lt;clobbers target=&quot;Sep&quot; /&gt;</span><br><span class="line">    &lt;/js-module&gt;</span><br><span class="line">    &lt;platform name=&quot;android&quot;&gt;</span><br><span class="line">        &lt;source-file src=&quot;src/android/Sep.java&quot; target-dir=&quot;src/com/xc/sep&quot; /&gt;</span><br><span class="line">        &lt;config-file target=&quot;res/xml/config.xml&quot; parent=&quot;/*&quot;&gt;</span><br><span class="line">            &lt;feature name=&quot;Sep&quot;&gt;</span><br><span class="line">                &lt;param name=&quot;android-package&quot; value=&quot;com.xc.sep.Sep&quot;/&gt;</span><br><span class="line">            &lt;/feature&gt;</span><br><span class="line">        &lt;/config-file&gt;</span><br><span class="line">        &lt;config-file target=&quot;AndroidManifest.xml&quot; parent=&quot;/*&quot;&gt;</span><br><span class="line">            &lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;</span><br><span class="line">        &lt;/config-file&gt;</span><br><span class="line">    &lt;/platform&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Sep-js内容"><a href="#Sep-js内容" class="headerlink" title="Sep.js内容"></a>Sep.js内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var exec = require(&apos;cordova/exec&apos;);</span><br><span class="line"></span><br><span class="line">var Sep = function() &#123;&#125;;</span><br><span class="line"></span><br><span class="line">Sep.prototype.showVibration = function(success, error) &#123;</span><br><span class="line">    exec(success, error, &apos;Sep&apos;, &apos;showVibration&apos;, []);</span><br><span class="line">&#125;;</span><br><span class="line">Sep.prototype.showToast=function(content,type)&#123;</span><br><span class="line">    exec(null, null, &quot;Sep&quot;, &quot;showToast&quot;, [content,type]);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var sep = new Sep();</span><br><span class="line">module.exports = sep;</span><br></pre></td></tr></table></figure>
+<h2 id="Sep-java内容"><a href="#Sep-java内容" class="headerlink" title="Sep.java内容"></a>Sep.java内容</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">package com.xc.sep;</span><br><span class="line"></span><br><span class="line">import org.apache.cordova.CallbackContext;</span><br><span class="line">import org.apache.cordova.CordovaInterface;</span><br><span class="line">import org.apache.cordova.CordovaPlugin;</span><br><span class="line">import org.apache.cordova.CordovaWebView;</span><br><span class="line">import org.json.JSONArray;</span><br><span class="line">import org.json.JSONException;</span><br><span class="line"></span><br><span class="line">import android.content.Context;</span><br><span class="line">import android.media.AudioManager;</span><br><span class="line">import android.os.Vibrator;</span><br><span class="line"></span><br><span class="line">public class Sep extends CordovaPlugin &#123;</span><br><span class="line"></span><br><span class="line">    public void initialize(CordovaInterface cordova, CordovaWebView webView) &#123;</span><br><span class="line">        super.initialize(cordova, webView);</span><br><span class="line">        Context context = this.cordova.getActivity().getApplicationContext();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException &#123;</span><br><span class="line">        if (&quot;showVibration&quot;.equals(action)) &#123;</span><br><span class="line">            showVibration();</span><br><span class="line">            callbackContext.success(&quot;success&quot;);</span><br><span class="line">            return true;</span><br><span class="line">        &#125;else if (&quot;showToast&quot;.equals(action)) &#123;</span><br><span class="line">            showToast(args.getString(0), args.getInt(1));</span><br><span class="line">            callbackContext.success(&quot;success&quot;);</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        callbackContext.error(&quot;error 没有该方法&quot;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    private void showVibration()&#123;  </span><br><span class="line">        CordovaInterface cordova = this.cordova;  </span><br><span class="line">        AudioManager manager = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);</span><br><span class="line">        if (manager.getRingerMode() != AudioManager.RINGER_MODE_SILENT) &#123;</span><br><span class="line">            Vibrator vibrator = (Vibrator) this.cordova.getActivity().getSystemService(Context.VIBRATOR_SERVICE);</span><br><span class="line">            vibrator.vibrate(1000);</span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">     private void showToast(String text,int type)&#123;  </span><br><span class="line">            CordovaInterface cordova = this.cordova;  </span><br><span class="line">            android.widget.Toast.makeText(cordova.getActivity(), text, type).show();  </span><br><span class="line">     &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>cordova plugin add  C:\Users\Administrator\Desktop\Sep（你的插件文件夹路径）</p>
+<h2 id="js中调用"><a href="#js中调用" class="headerlink" title="js中调用"></a>js中调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sep.showVibration(function(message) &#123;</span><br><span class="line">                     alert(&quot;showVibration :&quot;+message);</span><br><span class="line">                &#125;, function(message) &#123;</span><br><span class="line">                     alert(&quot;showVibration :&quot;+message);</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Sep.showToast(&quot;测试提示2秒&quot;,2);</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/https/1.1-https-init/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">https阿里云申请及服务器nginx配置</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            凸凸 &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer>
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

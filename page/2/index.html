@@ -3,24 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>ionic插件：地图定位和导航 | 凸凸</title>
+    <title>凸凸</title>
     
     
-        <meta name="keywords" content="ionic3" />
+        <meta name="keywords" content="凸凸" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="实现功能在手机上实现地图展示和定位信息，并可以添加标记在地图上，点击标记显示详情等。所以地图用web（方便拓展），定位用原生插件（浏览器定位不准确） 地图使用百度或者高德的jsapi，在项目中导入对应的js（都需要申请对应的开发者获取key） 定位 ios使用官方插件：cordova-plugin-geolocation  安卓使用百度定位插件：https://github.com/liangzh">
-<meta name="keywords" content="ionic3">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ionic插件：地图定位和导航">
-<meta property="og:url" content="http://chenyuanchn.github.io/ionic/10.1-ionic3-plugin-map/index.html">
+    <meta name="description" content="年轻人不要对自己太苛刻">
+<meta property="og:type" content="website">
+<meta property="og:title" content="凸凸">
+<meta property="og:url" content="http://chenyuanchn.github.io/page/2/index.html">
 <meta property="og:site_name" content="凸凸">
-<meta property="og:description" content="实现功能在手机上实现地图展示和定位信息，并可以添加标记在地图上，点击标记显示详情等。所以地图用web（方便拓展），定位用原生插件（浏览器定位不准确） 地图使用百度或者高德的jsapi，在项目中导入对应的js（都需要申请对应的开发者获取key） 定位 ios使用官方插件：cordova-plugin-geolocation  安卓使用百度定位插件：https://github.com/liangzh">
+<meta property="og:description" content="年轻人不要对自己太苛刻">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-16T08:56:18.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ionic插件：地图定位和导航">
-<meta name="twitter:description" content="实现功能在手机上实现地图展示和定位信息，并可以添加标记在地图上，点击标记显示详情等。所以地图用web（方便拓展），定位用原生插件（浏览器定位不准确） 地图使用百度或者高德的jsapi，在项目中导入对应的js（都需要申请对应的开发者获取key） 定位 ios使用官方插件：cordova-plugin-geolocation  安卓使用百度定位插件：https://github.com/liangzh">
+<meta name="twitter:title" content="凸凸">
+<meta name="twitter:description" content="年轻人不要对自己太苛刻">
     
 
     
@@ -163,18 +161,27 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            cordova
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/cordova/1.1-cordova-plugin/">cordova安卓插件开发</a></li>  <li class="file"><a href="/cordova/1.2-cordova-plugin-map/">cordova插件：地图定位和导航</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             https
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/https/1.1-https-init/">https阿里云申请及服务器nginx配置</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             ionic
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/ionic/1.1-ionic3-init/">ionic3(一)：入门篇</a></li>  <li class="file"><a href="/ionic/1.2-ionic3-plugin/">ionic3(二)：插件篇</a></li>  <li class="file active"><a href="/ionic/10.1-ionic3-plugin-map/">ionic插件：地图定位和导航</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/ionic/1.1-ionic3-init/">ionic3(一)：入门篇</a></li>  <li class="file"><a href="/ionic/1.2-ionic3-plugin/">ionic3(二)：插件篇</a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/index/">欢迎来到凸凸的知识库</a></li>  </ul> 
     </div>
@@ -247,7 +254,8 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-ionic/10.1-ionic3-plugin-map" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main">
+    <article id="post-index" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -255,22 +263,12 @@
                 
                     <div class="article-meta">
                         
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/ionic/">ionic</a>
-    </div>
-
                         
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ionic3/">ionic3</a>
-    </div>
-
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/ionic/10.1-ionic3-plugin-map/">
-            <time datetime="2017-09-25T16:00:00.000Z" itemprop="datePublished">2017-09-26</time>
+        <a href="/index/">
+            <time datetime="2016-12-31T16:00:00.000Z" itemprop="datePublished">2017-01-01</time>
         </a>
     </div>
 
@@ -282,7 +280,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            ionic插件：地图定位和导航
+            欢迎来到凸凸的知识库
         </h1>
     
 
@@ -293,25 +291,10 @@
         
         
             
-                <div id="toc" class="toc-article">
-                <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现功能"><span class="toc-number">1.</span> <span class="toc-text">实现功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#地图"><span class="toc-number">2.</span> <span class="toc-text">地图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定位"><span class="toc-number">3.</span> <span class="toc-text">定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导航"><span class="toc-number">4.</span> <span class="toc-text">导航</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有空完善"><span class="toc-number">5.</span> <span class="toc-text">有空完善</span></a></li></ol>
-                </div>
-            
         
         
-            <h2 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h2><p>在手机上实现地图展示和定位信息，并可以添加标记在地图上，点击标记显示详情等。所以地图用web（方便拓展），定位用原生插件（浏览器定位不准确）</p>
-<h2 id="地图"><a href="#地图" class="headerlink" title="地图"></a>地图</h2><p>使用百度或者高德的jsapi，在项目中导入对应的js（都需要申请对应的开发者获取key）</p>
-<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><ul>
-<li><p>ios使用官方插件：cordova-plugin-geolocation</p>
-</li>
-<li><p>安卓使用百度定位插件：<a href="https://github.com/liangzhenghui/cordova-qdc-baidu-location">https://github.com/liangzhenghui/cordova-qdc-baidu-location</a></p>
-</li>
-<li><p>安卓使用高德定位插件：<a href="https://github.com/tomisacatyet/Cordova-AMap4Locaton">https://github.com/tomisacatyet/Cordova-AMap4Locaton</a></p>
-</li>
-</ul>
-<h2 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h2><p><a href="https://github.com/huangliop/cordova-baidu-navigator">https://github.com/huangliop/cordova-baidu-navigator</a></p>
-<h2 id="有空完善"><a href="#有空完善" class="headerlink" title="有空完善"></a>有空完善</h2>
+            <p>这是凸凸的知识库站点，<a href="https://github.com/chenyuanchn">github地址</a>。</p>
+
             </div>
         
         <footer class="article-footer">
@@ -323,20 +306,15 @@
     
 <nav id="article-nav">
     
-        <a href="/https/1.1-https-init/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/ionic/1.2-ionic3-plugin/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    https阿里云申请及服务器nginx配置
+                    ionic3(二)：插件篇
                 
             </div>
         </a>
     
-    
-        <a href="/ionic/1.1-ionic3-init/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">ionic3(一)：入门篇</div>
-        </a>
     
 </nav>
 
@@ -354,6 +332,8 @@
 <script type="text/javascript">
     !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
 </script>     
+
+
 </section>
         </div>
         <footer id="footer">
