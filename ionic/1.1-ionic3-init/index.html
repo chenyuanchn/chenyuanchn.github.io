@@ -9,18 +9,18 @@
         <meta name="keywords" content="ionic3" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="ionic组成 cordova（js调用原生） angular（js框架） ionic自身封装了适应移动端的常用组件和样式  开始 安装nodejs 安装cordova和ionic 1npm install -g cordova ionic  创建项目 1ionic start myApp tabs    myApp:项目名 tabs:模板(blank、tabs、sidemenu、super等)">
+    <meta name="description" content="通过本节，你将学会：  ionic3项目初始化 ionic3项目在电脑运行 ionic3项目在安卓手机运行  ionic组成 cordova（js调用原生） angular（js框架） ionic自身封装了适应移动端的常用组件和样式  开始 安装nodejs 安装cordova和ionic 1npm install -g cordova ionic  创建项目 1ionic start myApp">
 <meta name="keywords" content="ionic3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ionic3(一)：入门篇">
 <meta property="og:url" content="http://chenyuanchn.github.io/ionic/1.1-ionic3-init/index.html">
 <meta property="og:site_name" content="凸凸">
-<meta property="og:description" content="ionic组成 cordova（js调用原生） angular（js框架） ionic自身封装了适应移动端的常用组件和样式  开始 安装nodejs 安装cordova和ionic 1npm install -g cordova ionic  创建项目 1ionic start myApp tabs    myApp:项目名 tabs:模板(blank、tabs、sidemenu、super等)">
+<meta property="og:description" content="通过本节，你将学会：  ionic3项目初始化 ionic3项目在电脑运行 ionic3项目在安卓手机运行  ionic组成 cordova（js调用原生） angular（js框架） ionic自身封装了适应移动端的常用组件和样式  开始 安装nodejs 安装cordova和ionic 1npm install -g cordova ionic  创建项目 1ionic start myApp">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-20T03:10:42.291Z">
+<meta property="og:updated_time" content="2018-03-22T02:08:29.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ionic3(一)：入门篇">
-<meta name="twitter:description" content="ionic组成 cordova（js调用原生） angular（js框架） ionic自身封装了适应移动端的常用组件和样式  开始 安装nodejs 安装cordova和ionic 1npm install -g cordova ionic  创建项目 1ionic start myApp tabs    myApp:项目名 tabs:模板(blank、tabs、sidemenu、super等)">
+<meta name="twitter:description" content="通过本节，你将学会：  ionic3项目初始化 ionic3项目在电脑运行 ionic3项目在安卓手机运行  ionic组成 cordova（js调用原生） angular（js框架） ionic自身封装了适应移动端的常用组件和样式  开始 安装nodejs 安装cordova和ionic 1npm install -g cordova ionic  创建项目 1ionic start myApp">
     
 
     
@@ -165,7 +165,7 @@
                             &nbsp;
                             cordova
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/cordova/1.2-cordova-plugin-map/">cordova插件：地图定位和导航</a></li>  <li class="file"><a href="/cordova/1.1-cordova-plugin/">cordova安卓插件开发</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/cordova/1.1-cordova-plugin/">cordova安卓插件开发</a></li>  <li class="file"><a href="/cordova/1.2-cordova-plugin-map/">cordova插件：地图定位和导航</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -322,12 +322,18 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ionic组成"><span class="toc-number">1.</span> <span class="toc-text">ionic组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">2.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#报错"><span class="toc-number">3.</span> <span class="toc-text">报错</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ionic组成"><span class="toc-number">1.</span> <span class="toc-text">ionic组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">2.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在安卓机子上跑"><span class="toc-number">3.</span> <span class="toc-text">在安卓机子上跑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#报错"><span class="toc-number">4.</span> <span class="toc-text">报错</span></a></li></ol>
                 </div>
             
         
         
-            <h2 id="ionic组成"><a href="#ionic组成" class="headerlink" title="ionic组成"></a>ionic组成</h2><ul>
+            <p>通过本节，你将学会：</p>
+<ul>
+<li>ionic3项目初始化</li>
+<li>ionic3项目在电脑运行</li>
+<li>ionic3项目在安卓手机运行</li>
+</ul>
+<h2 id="ionic组成"><a href="#ionic组成" class="headerlink" title="ionic组成"></a>ionic组成</h2><ul>
 <li>cordova（js调用原生）</li>
 <li>angular（js框架）</li>
 <li>ionic自身封装了适应移动端的常用组件和样式</li>
@@ -339,25 +345,18 @@
 </li>
 <li><p>创建项目</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic start myApp tabs</span><br></pre></td></tr></table></figure>
+<p> myApp:项目名 tabs:模板(blank、tabs、sidemenu、super等)</p>
+</li>
+<li><p>创建完会自动npm install,速度慢的话取消了用cnpm</p>
+</li>
+<li>运行项目（中间有提示更新就一直y确认到底）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> myApp</span><br><span class="line">ionic serve</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<ul>
-<li>myApp:项目名</li>
-<li>tabs:模板(blank、tabs、sidemenu、super等)</li>
-</ul>
-<ol>
-<li>创建完会自动npm install,速度慢的话取消了用cnpm</li>
-<li><p>运行项目（中间有提示更新就一直y确认到底）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> myApp</span><br><span class="line">ionic serve</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在安卓机子上跑</p>
-</li>
-</ol>
-<ul>
+<h2 id="在安卓机子上跑"><a href="#在安卓机子上跑" class="headerlink" title="在安卓机子上跑"></a>在安卓机子上跑</h2><ol>
 <li>下载<a href="http://www.androiddevtools.cn/">SDK Tools</a>，配置环境变量ANDROID_HOME，并下载好对应android sdk build-tools,sdk platform等</li>
-<li>运行指令（会自动添加安卓平台）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic cordova run android</span><br></pre></td></tr></table></figure>
+<li>运行以下指令（会自动添加安卓平台）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ionic cordova run android</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
+</ol>
 <h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><ul>
 <li>如果有does not have Api.js这种报错，删了node_modules重新使用npm install，别使用cnpm install</li>
 <li>有些情况还是需要科学上网的</li>
