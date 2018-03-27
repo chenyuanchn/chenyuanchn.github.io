@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="凸凸">
 <meta property="og:description" content="写在前面环境搭建开发都按微信小程序官方文档一步一步来 子页面退回父页面时的数据传递问题 直接设置上一页数据  123456789var pages = getCurrentPages();//获取当前页面栈var currentPage = pages[pages.length - 1];//当前页面var prevPage = pages[pages.length - 2];//上一个页面pre">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-20T03:10:42.300Z">
+<meta property="og:updated_time" content="2018-03-27T06:57:32.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序开发问题汇总">
 <meta name="twitter:description" content="写在前面环境搭建开发都按微信小程序官方文档一步一步来 子页面退回父页面时的数据传递问题 直接设置上一页数据  123456789var pages = getCurrentPages();//获取当前页面栈var currentPage = pages[pages.length - 1];//当前页面var prevPage = pages[pages.length - 2];//上一个页面pre">
@@ -322,7 +322,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子页面退回父页面时的数据传递问题"><span class="toc-number">2.</span> <span class="toc-text">子页面退回父页面时的数据传递问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#待完善"><span class="toc-number">3.</span> <span class="toc-text">待完善</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子页面退回父页面时的数据传递问题"><span class="toc-number">2.</span> <span class="toc-text">子页面退回父页面时的数据传递问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#首页面tabBar直接触发事件"><span class="toc-number">3.</span> <span class="toc-text">首页面tabBar直接触发事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#待完善"><span class="toc-number">4.</span> <span class="toc-text">待完善</span></a></li></ol>
                 </div>
             
         
@@ -336,6 +336,17 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wx.setStorageSync(<span class="string">'data'</span>, yourData);<span class="comment">//存</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//返回上一个页面</span></span><br><span class="line"></span><br><span class="line">wx.getStorageSync(<span class="string">'data'</span>);<span class="comment">//取</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h2 id="首页面tabBar直接触发事件"><a href="#首页面tabBar直接触发事件" class="headerlink" title="首页面tabBar直接触发事件"></a>首页面tabBar直接触发事件</h2><p>当我听到这个需求的时候，我查了下微信api，并没有提供方法（截止到2018/3/27)，所以我是拒绝的，但设计要做。。。行吧，好吧，可以</p>
+<p>需求：点击tabBar中间的图标可以直接跳转一个页面，而不是在tabbar上切换</p>
+<p>实现方式:</p>
+<ol>
+<li>用app.globalData.checkTab的变量记录之前选择的tabBar</li>
+<li>先进入tabBar这个图标对应的空白页面</li>
+<li>在onShow里判断打开真正要的页面，在第二次onShow里回到app.globalData.checkTab的变量记录的位置</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在tabBar对应的这几个页面增加记录选择的tabBar</span></span><br><span class="line">  onShow: <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    app.globalData.checkTab = <span class="string">'../index/index'</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接触发页面</span></span><br><span class="line"><span class="keyword">const</span> app = getApp()</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    flag: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onShow: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'onShow'</span>)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.data.flag) &#123;</span><br><span class="line">      wx.navigateTo(&#123;</span><br><span class="line">        url: <span class="string">'../publish/publish'</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        flag: <span class="literal">true</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        flag: <span class="literal">false</span></span><br><span class="line">      &#125;)</span><br><span class="line">      wx.switchTab(&#123;</span><br><span class="line">        url: app.globalData.checkTab</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>同样，这个方式还能实现例如点击直接触发某个微信api</p>
 <h2 id="待完善"><a href="#待完善" class="headerlink" title="待完善"></a>待完善</h2>
             </div>
         

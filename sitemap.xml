@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://chenyuanchn.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/1.1-mini-program-init/</loc>
+    
+    <lastmod>2018-03-27T06:57:32.394Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://chenyuanchn.github.io/cordova/1.1-cordova-plugin/</loc>
     
     <lastmod>2018-03-22T03:02:36.136Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://chenyuanchn.github.io/https/1.1-https-init/</loc>
     
     <lastmod>2018-03-21T07:32:07.061Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://chenyuanchn.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/1.1-mini-program-init/</loc>
-    
-    <lastmod>2018-03-20T03:10:42.300Z</lastmod>
     
   </url>
   
